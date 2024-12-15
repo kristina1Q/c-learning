@@ -1,0 +1,8 @@
+//long long 取模时不能对应1e9
+//例如
+// #define MOD 1e9
+// LL a;
+// a%MOD 会报错
+
+
+// 所以需要LL MOD=1e9;
