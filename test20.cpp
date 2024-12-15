@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #define LL long long
 using namespace std;
-const int N=1e5+10;
+const int N=1e5+7;
 int primes[N];
 bool tell[N];
 int main()
