@@ -4,6 +4,11 @@
 //包含头文件<map>
 
 //定义map
+运行效率方面：unordered_map最高，而map效率较低但 提供了稳定效率和有序的序列。
+占用内存方面：map内存占用略低，unordered_map内存占用略高,而且是线性成比例的。
+
+unordered_map 无序map，查询key效率更高
+
 map<datatype1,datatype2> mp;
 datatype1是键(key),datatype2是值(ans);
 map <string,int> mp;
@@ -89,5 +94,8 @@ map按value排序
 map转存到vector中
 vector<PAIR> name_score_vec(name_score_map.begin(), name_score_map.end());  
 sort(name_score_vec.begin(), name_score_vec.end(), CmpByValue()); 
+
+
+
 
 

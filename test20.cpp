@@ -4,14 +4,14 @@ using namespace std;
 const int N=1e5+7;
 int primes[N];
 bool tell[N];
-int main()
-{
+int main() 
+{  
     ios::sync_with_stdio(0),cin.tie(0),cout.tie(0);
-    int a,now=0;
+    int a,now=0; 
     int ans=0;
     cin>>a;
     for(int i=2;i<=a;i++){
-        if(!tell[i]){
+        if(!tell[i]){ 
             ans++;
             primes[++now]=i;
             }
