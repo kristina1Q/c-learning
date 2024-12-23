@@ -36,80 +36,33 @@
 // mod需为质数，定为1e9+7，不然有问题
 
 
-// #include <iostream>
-// using namespace std;
-// typedef long long ll;  
-// const int N = 1e5 + 10;  
-// ll mod = 1e9 + 7;  
-// ll fact[N], infact[N];  
-
-// ll quick_pow(ll a, ll b) {  
-//     ll ans = 1;  
-//     while (b) {  
-//         if (b & 1) ans = (ans * a) % mod;  
-//         a = a * a % mod;  
-//         b >>= 1;  
-//     }  
-//     return ans;  
-// }  
-
-// void init() {  
-//     // 预处理因子相关mod p的逆元  
-//     fact[0] = infact[0] = 1;  
-//     for (int i = 1; i <= N; i++) {  
-//         fact[i] = fact[i - 1] * i % mod;  
-//     }  
-
-//     for (int i = 1; i <= N; i++) {  
-//         infact[i] = quick_pow(fact[i], mod - 2) % mod;  
-//         // infact[i] = infact[i - 1] * quick_pow(i, mod - 2) % mod;  
-//     }  
-// }
-
-// int main()  
-// { // 主程序  
-// init(); // 初始化factorials和逆元   
-
-// ll a, b;  
-// cin >> a >>b;
-// ll ans = fact[a] * infact[a - b] % mod * infact[b] % mod;  
-// cout << ans << endl;  
-// return 0;
-// }
-
-
-#include <iostream>
-using namespace std;
+#include <bits/stdc++.h>
 #define LL long long
-const int MOD=1e9+7;
-const int maxn=1e5+10;
-LL fact[maxn]{};
-LL infact[maxn]{};
-LL pow1(LL a)
-{
-    LL n=MOD-2,r=1;
-    while(n!=0)
-    {
-        if(n&1)r=(r*a)%MOD;
-        a=(a*a)%MOD;
-        n>>=1;
-    }
-    return r%MOD;
+using namespace std;
+const int MOD = 1e9+7;
+
+int inv(int a) {  
+    //return fpow(a, MOD-2, MOD);  
+    return a == 1 ? 1 : (long long)(MOD - MOD / a) * inv(MOD % a) % MOD;  
+}  
+LL C(LL n,LL m)  
+{  
+    if(m < 0)return 0;  
+    if(n < m)return 0;  
+    if(m > n-m) m = n-m;  
+ 
+    LL up = 1, down = 1;  
+    for(LL i = 0 ; i < m ; i ++){  
+        up = up * (n-i) % MOD;   //n的阶乘除以m的阶乘
+        down = down * (i+1) % MOD;  
+    }  
+    return up * inv(down) % MOD;  //用逆元计算
 }
-void init()
-{
-    for(LL i=1;i<=maxn;i++)
-    {
-        fact[i]=fact[i-1]*i%MOD;
-        infact[i]=infact[i-1]*pow1(i)%MOD;
-    }
-}
+
 int main()
 {
-    fact[0]=infact[0]=1;
-    init();
-    int a,b;
-    cin >> a >>b;
-    cout <<fact[a]*infact[b]*infact[a-b]%MOD;
+    LL n,m;
+    cin>>n>>m;
+    cout<<C(n,m);
     return 0;
 }

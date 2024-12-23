@@ -7,7 +7,7 @@ void solve()
     cin>>n;
     vector<LL> arr(n);
     vector<LL> arr1{};
-    for(LL i=0;i<n;i++){
+    for(LL i=0;i<n;i++)
         cin>>arr[i];
     }
     for(LL i=0;i<n;i++){
