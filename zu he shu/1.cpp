@@ -66,3 +66,36 @@ int main()
     cout<<C(n,m);
     return 0;
 }
+
+
+
+//正常标准版：
+const int N =数据
+const int MOD =数据
+LL Cnm(LL n,LL m)
+{
+   return fac[n] * ((ifac[n - m] * ifac[m]) % MOD) % MOD; 
+}
+LL pow1(LL n)
+{
+    LL d=MOD-2;
+    LL r=1;
+    while(d)
+    {
+        if(d&1)r=r*(n%MOD)%MOD;
+        n=n*(n%MOD)%MOD;
+        d>>=1;
+    }
+    return r%MOD;
+}
+
+int main()
+{
+     fac[0]=ifac[0]=1;
+    for(LL i=1;i<N;++i)fac[i]=fac[i-1]*i%MOD;
+     ifac[N - 1] = pow1(fac[N - 1]); 
+    for (LL i = N - 2; i >= 1; --i) {  
+        ifac[i] = ifac[i + 1] * (i + 1) % MOD; 
+    }  
+    return 0;
+}
