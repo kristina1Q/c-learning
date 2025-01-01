@@ -1,27 +1,11 @@
-#include<stdio.h>
-typedef long long int i64;
-int main(void)
+//https://www.luogu.com.cn/problem/CF1A
+#include <bits/stdc++.h>
+#define LL long long
+using namespace std;
+int main()
 {
-	i64 n,k;
-	scanf("%ld %ld",&n,&k);
-	i64 ans=0;
-	if(k*2==n)
-	{
-		ans=n;
-	}
-	else
-	{
-		int min;
-		if(k>n-k)
-		{
-			min=n-k;
-		}
-		else
-		{
-			min=k;
-		}
-		ans=n*min+1;
-	}
-	printf("%ld\n",ans);
+	double n,m,a;
+	cin>>n>>m>>a;
+	cout<<(LL)(ceil(n/a)*ceil(m/a));
 	return 0;
- }  
+}
